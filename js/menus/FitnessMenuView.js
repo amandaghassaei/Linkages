@@ -140,8 +140,8 @@ FitnessMenuView = Backbone.View.extend({
         <input type="radio" name="fitnessMetrics" <% if (!fitnessBasedOnTargetPath){ %> checked <% } %> value="walking" data-toggle="radio" class="custom-radio"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>\
         Obstacle Course (Walking) <a class="helpModal" data-type="walkingMetric" href="#">( ? )</a>\
         </label>\
-        <label class="radio">\
-        <input type="radio" name="fitnessMetrics" <% if (fitnessBasedOnTargetPath){ %>checked <% } %> value="targetPath" data-toggle="radio" class="custom-radio"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>\
+        <label class="radio disabled">\
+        <input disabled type="radio" name="fitnessMetrics" <% if (fitnessBasedOnTargetPath){ %>checked <% } %> value="targetPath" data-toggle="radio" class="custom-radio"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>\
         Target Path Fit <a class="helpModal" data-type="targetPathMetric" href="#">( ? )</a>\
         </label><br/>\
         <% if (fitnessBasedOnTargetPath){ %>\
