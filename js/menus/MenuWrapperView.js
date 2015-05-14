@@ -49,6 +49,9 @@ MenuWrapper = Backbone.View.extend({
             }
         });
 
+        if (tabName != "script") globals.appState.set("scriptMenuIsVisible", false);
+        else globals.appState.set("scriptMenuIsVisible", true);
+
         if (tabName == "drawParams") {
             this.drawMenu.render();
         } else if (tabName == "population"){
