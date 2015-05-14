@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--UI-->
+    <script src="dependencies/UI/jquery-2.1.3.js"></script>
+    <script src="dependencies/UI/underscore.js"></script>
+
+    <!--backbone model/view framework-->
+    <script src="dependencies/UI/backbone.js"></script>
+
+    <!--flatUI bootstrap theme-->
+    <link href="dependencies/UI/flatUI/css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="dependencies/UI/flatUI/css/flat-ui.css" rel="stylesheet">
+    <script src="dependencies/UI/flatUI/js/flat-ui.js"></script>
+
+    <!--bootstrap slider-->
+    <link href="dependencies/UI/bootstrap-slider/bootstrap-slider.css" rel="stylesheet">
+    <script src="dependencies/UI/bootstrap-slider/bootstrap-slider.js"></script>
+
+    <!--js editor-->
+    <link href="dependencies/UI/codemirror/codemirror.css" rel="stylesheet">
+    <script src="dependencies/UI/codemirror/codemirror.js"></script>
+    <script src="dependencies/UI/codemirror/javascript.js"></script>
+
+    <!--threeJS-->
+    <script src="dependencies/threeJS/three.js"></script>
+    <script src="dependencies/threeJS/OrbitControls.js"></script>
+    <script src="dependencies/svg/SVGRenderer.js"></script>
+    <script src="dependencies/svg/Projector.js"></script>
+
+    <!--stl import/export-->
+    <script src="dependencies/loaders/FileSaver.min.js"></script>
+    <script src="dependencies/threeJS/THREE2STL.js"></script>
+
+    <!--physics-->
+    <script src="dependencies/physics/matter-0.8.0.js"></script>
+
+    <!--numerical javascript-->
+    <script src="dependencies/physics/numeric-1.2.6.js"></script>
+
+    <!--multi-threading-->
+    <script src="js/multiThreading/worker.js"></script>
+    <script src="js/multiThreading/persistentWorkers.js"></script>
+
+    <!--models-->
+    <script src="js/models/ThreeModel.js"></script>
+    <script src="js/models/ThreeSVG.js"></script>
+    <script src="js/models/PhysicsModel.js"></script>
+    <script src="js/models/AppState.js"></script>
+    <script src="js/models/Population.js"></script>
+    <script src="js/models/Linkage.js"></script>
+    <script src="js/models/Walker.js"></script>
+    <script src="js/models/Link.js"></script>
+    <script src="js/models/Hinge.js"></script>
+    <script src="js/models/DriveCrank.js"></script>
+    <script src="js/help/helpMessages.js"></script>
+    <!--<script src="js/models/ScriptAPI.js"></script>-->
+
+    <!--views-->
+    <script src="js/menus/MenuWrapperView.js"></script>
+    <script src="js/menus/MenuErrorView.js"></script>
+    <script src="js/menus/Navbar.js"></script>
+    <script src="js/menus/Ribbon.js"></script>
+    <script src="js/menus/DrawParamsMenuView.js"></script>
+    <script src="js/menus/PopulationMenuView.js"></script>
+    <script src="js/menus/FitnessMenuView.js"></script>
+    <script src="js/menus/MutationMenuView.js"></script>
+    <script src="js/menus/RunMenuView.js"></script>
+    <script src="js/menus/MillMenuView.js"></script>
+    <script src="js/menus/ScriptMenuView.js"></script>
+    <script src="js/threeViews/ThreeView.js"></script>
+    <script src="js/help/HelpModalView.js"></script>
+
+    <!--CAM-->
+    <script src="js/CAM/MillingExporter.js"></script>
+
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+<body>
+
+<nav id="globalNav" class="navbar navbar-inverse navbar-embossed" role="navigation">
+    <div class="navbar-header">
+      <a id="mainNavLink" class="navbar-brand" target="_blank" href="#">LinkageOptimizer &nbsp;&nbsp;</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a data-menu-id="navDesign" class="menuHoverControls" href="#">Design</a></li>
+        <li><a data-menu-id="navEvo" class="menuHoverControls" href="#">Evolve</a></li>
+        <!--<li><a data-menu-id="navEvo" class="menuHoverControls" href="#">Evolve</a></li>-->
+        <li><a data-menu-id="navExport" class="menuHoverControls" href="#">Make</a></li>
+        <li class="dropdown navDropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">File <b class="caret"></b></a>
+          <span class="dropdown-arrow"></span>
+          <ul class="dropdown-menu">
+                <li><a id="saveJSON" href="#">Save Run &nbsp&nbsp&nbsp&nbsp(CTRL/&#8984; + S)</a></li>
+                <li><a data-toggle="modal" data-target="#saveAsModel" href="#">Save Run As... &nbsp&nbsp&nbsp&nbsp(CTRL/&#8984 + Shift + S)</a></li>
+                <li><a class="importJSON" href="#">Open Run... &nbsp&nbsp&nbsp&nbsp(CTRL/&#8984 + O)</a></li>
+                <li class="divider"></li>
+
+                <li class="dropdown-submenu">
+                <a tabindex="-1">Population...<span class="pull-right fui-arrow-right"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="importJSON" href="#">Load Population...</a></li>
+                    <li><a class="importJSON" href="#">Init Population From Linkage...</a></li>
+                    <li><a id="navSavePopulation" href="#">Save Population</a></li>
+                </ul>
+
+                <li class="dropdown-submenu">
+                <a tabindex="-1">Linkage...<span class="pull-right fui-arrow-right"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="importJSON" href="#">Init Population From Linkage...</a></li>
+                    <li><a id="saveLinkage" href="#">Save Best Linkage</a></li>
+                </ul>
+
+                <li class="dropdown-submenu">
+                <a tabindex="-1">Path...<span class="pull-right fui-arrow-right"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a class="importJSON" href="#">Load Target Path...</a></li>
+                     <li><a id="navSavePath" href="#">Save Target Path</a></li>
+                </ul>
+
+                <li class="divider"></li>
+                <li><a id="saveRunStats" href="#">Save Run Statistics</a></li>
+
+              </li>
+            </ul>
+        <li><a data-menu-id="about" class="menuHoverControls" target="_blank" href="http://isites.harvard.edu/icb/icb.do?keyword=k109880&tabgroupid=icb.tabgroup196134">About</a></li>
+       </ul>
+        <ul class="nav navbar-nav pull-right">
+            <li><a id="showHideMenu" href="#">Hide Menu >></a></li>
+        </ul>
+
+    </div><!-- /.navbar-collapse -->
+    <input id="fileInput" type="file">
+
+</nav>
+
+<div class="modal fade" id="saveAsModel" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <p class="modal-title" >Enter File Name</p>
+            </div>
+            <div class="modal-body">
+                <input id="saveAsFileName" type="text" value="run" placeholder="Enter file name" class="form-control filename">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" id="saveAsJSON" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true"></div>
+
+<div id="navRibbon"></div>
+<div id="menuWrapper">
+    <div id="menuHeader"></div>
+    <div id="menuErrors"></div>
+    <div id="menuContent"></div>
+</div>
+<div id="scriptView"></div>
+<div id="threeContainer"></div>
+<div id="svgContainer"></div>
+<div id="navHelp">Scroll to zoom<br/>Left click + drag to pan</div>
+
+
+</body>
+</html>
