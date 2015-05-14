@@ -36,6 +36,7 @@ NavBar = Backbone.View.extend({
         this.listenTo(this.model, "change:currentNav", this._updateNavSelectionUI);
         $(document).bind('keyup', this._handleKeyStroke);
 
+        this._logoHover();
         this._updateShowHideButton();
         this._updateNavSelectionUI();
     },
@@ -181,6 +182,16 @@ NavBar = Backbone.View.extend({
 
     _deselectAllNavItems: function(){
         $(".open").removeClass("open");//no highlight
+    },
+
+    _logoHover: function(){
+        var $logo = $("#logo");
+        $logo.mouseover(function(){
+            $logo.attr("src","assets/ui/logo-active.png");
+        });
+        $logo.mouseout(function(){
+            $logo.attr("src","assets/ui/logo.png");
+        });
     }
 
 });
