@@ -31,17 +31,17 @@ function buildHelpMessages(){
         walkingMetric: {
             title: "Walking Fitness Metric",
             text:'This fitness metric measures the ability of a walking machine made from an assembly of leg linkages to locomote across a simulated physics terrain.  A walker assembly with six legs is shown above, with one leg linkage highlighted.',
-            img: "/assets/imgs/legAssembly.jpg"
+            img: "../../assets/imgs/legAssembly.jpg"
         },
         numLegPairs: {
             title: "Number of Leg Pairs",
             text: 'This sets the number of legs to use when constructing a walking machine from a leg linkage design.   A pair of legs is constructed by reflecting one leg linkage of phase <i>theta</i> across the y-axis to create a complimentary leg of phase <i>pi - theta</i>.  Then n pairs of legs are added to the central drive crank, each pair out of phase by <i>2pi/n</i> radians.<br/><br/>A walker assembly with three legs pairs (six legs in total) is shown above, with one leg linkage highlighted.',
-            img: "/assets/imgs/legAssembly.jpg"
+            img: "../../assets/imgs/legAssembly.jpg"
         },
         terrainType: {
             title: "Terrain",
             text:'Choose the type of terrain for the fitness evaluation.  For example, a terrain with inclines and declines might evolve walkers with more asymmetric gaits.  A terrain will many small obstacles may evolve walkers with higher step heights.  Some sample terrain types are shown above: flat (A), incline/decline (B), and small obstacles (C).',
-            img: "/assets/imgs/courses.jpg"
+            img: "../../assets/imgs/courses.jpg"
         },
         evalPeriod: {
             title: "Evaluation Period",
@@ -79,7 +79,7 @@ function buildHelpMessages(){
         mutateTopology: {
             title: "Mutate Topology",
             text:'Currently, optimization of the walkers is only being performed on the leg linkage parameters - the relative lengths of links in the mechanisms.  However, it would be interesting to also be able to mutate the linkage topology - the connectivity and number of links and hinges that for a linkage.<br/><br/>The mutation of linkage topology requires a set of rules that governs the possible topology changes.  One constraint that should be held throughout this process is that the mutation should not alter the combined degrees of freedom of a linkage (combined degrees of freedom always equals 1).  Some example mutation rules could be:<br/><br/>A single link mutates into a rigid three-bar linkage<br/>A three bar linkage mutates into a four-bar linkage (check that the total combined degrees of freedom of the linkage do not increase)<br/>A three bar linkage mutates into a four-bar linkage (check that the total combined degrees of freedom of the linkage do not decrease)<br/><br/>These mutation processes are illustrated above.',
-            img: "/assets/imgs/topMutationRules.jpg"
+            img: "../../assets/imgs/topMutationRules.jpg"
         }
     }
 };
