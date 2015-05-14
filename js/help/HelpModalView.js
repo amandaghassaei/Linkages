@@ -23,7 +23,7 @@ HelpModalView = Backbone.View.extend({
 
     _render: function(e){
         e.preventDefault();
-        var type = $(e.target).data("type");
+        var type = $(e.target).parent().data("type");
         var message = this.helpMessages[type];
         if (!message || message === undefined || message === null){
             console.warn("no help message for type " + type);

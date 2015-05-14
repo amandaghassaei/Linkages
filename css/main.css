@@ -347,3 +347,9 @@ input.numberInput, input.floatInput{
     font-size: 16px;
     padding: 0 100px 20px 33px;
 }
+
+.helpIcon{
+    height: 19px;
+  padding-left: 5px;
+  opacity: 0.8;
+}

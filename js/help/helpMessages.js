@@ -62,7 +62,7 @@ function buildHelpMessages(){
         simulatedAnnealing: {
             title: "Simulated Annealing",
             text:'<a href="http://en.wikipedia.org/wiki/Simulated_annealing" target="_blank">Simulated Annealing</a> is a technique inspired by metallurgy that allows you to control the way your optimization technique introduces variance and avoid local optima.',
-            img: "http://en.wikipedia.org/wiki/Simulated_annealing#/media/File:Hill_Climbing_with_Simulated_Annealing.gif"
+            img: "http://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif"
         },
         mutationRate: {
             title: "Mutation Rate",
