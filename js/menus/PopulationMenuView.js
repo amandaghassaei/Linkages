@@ -101,10 +101,6 @@ PopulationMenuView = Backbone.View.extend({
         </label>\
         <label class="radio disabled">\
         <input type="radio" name="optimizationStrategies" <% if (optimizationStrategy == "nelderMead"){ %>checked <% } %>value="nelderMead" data-toggle="radio" disabled class="custom-radio"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>\
-        Nelder–Mead (with inertia)\
-        </label>\
-        <label class="radio disabled">\
-        <input type="radio" name="optimizationStrategies" <% if (optimizationStrategy == "nelderMead"){ %>checked <% } %>value="nelderMead" data-toggle="radio" disabled class="custom-radio"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>\
         Conjugate Gradient  <a class="helpModal" data-type="conjugateGrad" href="#">( ? )</a>\
         </label>\
         <br/>\

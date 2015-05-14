@@ -17,11 +17,11 @@ Population.prototype._initFirstGeneration = function(archetype){
     if (archetype === undefined){
         archetype = new Linkage();
 
-        var hinge1 = archetype.addHingeAtPosition({x:15,y:30});
-        var hinge2 = archetype.addHingeAtPosition({x:0,y:40});
+        var hinge1 = archetype.addHingeAtPosition({x:15,y:-30});
+        var hinge2 = archetype.addHingeAtPosition({x:0,y:-40});
         var hinge3 = archetype.addHingeAtPosition({x:-10,y:0});
-        var hinge4 = archetype.addHingeAtPosition({x:14,y:2}).setStatic(true);
-        var hinge5 = archetype.addHingeAtPosition({x:-20,y:5});
+        var hinge4 = archetype.addHingeAtPosition({x:14,y:-2}).setStatic(true);
+        var hinge5 = archetype.addHingeAtPosition({x:-20,y:-5});
 
         archetype.link(hinge1, hinge3);//add an optional third param to set to a specific length
         archetype.link(hinge4, hinge1);
