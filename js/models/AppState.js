@@ -18,7 +18,8 @@ define(['underscore', 'backbone', 'threeModel', 'three', 'plist', 'fileSaver'], 
 
             menuIsVisible: true,
             ribbonIsVisible: true,
-            axesAreVisible: false
+            axesAreVisible: false,
+            scriptIsVisible: false
         },
 
         initialize: function(){
@@ -32,6 +33,7 @@ define(['underscore', 'backbone', 'threeModel', 'three', 'plist', 'fileSaver'], 
 
             this.listenTo(this, "change:currentTab", this._tabChanged);
             this.listenTo(this, "change:currentNav", this._navChanged);
+            this.listenTo(this, "change:scriptIsVisible", this._showScript);
 
             this.downKeys = {};//track keypresses to prevent repeat keystrokeson hold
 
@@ -58,6 +60,14 @@ define(['underscore', 'backbone', 'threeModel', 'three', 'plist', 'fileSaver'], 
             var navSelection = this.get("currentNav");
             var nextTab = this.get("lastNavTab")[navSelection] || _.keys(plist.allMenus[navSelection].tabs)[0];
             this.set("currentTab", nextTab, {silent:true});
+        },
+
+        _showScript: function(){
+            var state = this.get("scriptIsVisible");
+            require(['scriptView'], function(scriptView){
+                if (state) scriptView.show();
+                else scriptView.hide();
+            });
         },
 
         ///////////////////////////////////////////////////////////////////////////////

@@ -16,6 +16,8 @@ require.config({
         flatUI: '../dependencies/flatUI/js/flat-ui',
         bootstrapSlider: '../dependencies/bootstrap-slider/bootstrap-slider',
         fileSaverLib: '../dependencies/loaders/FileSaver.min',
+        codeMirror: '../dependencies/codemirror/codemirror',
+        codeMirrorJS: '../dependencies/codemirror/javascript',
 
         //three
         three: '../dependencies/three',
@@ -36,7 +38,8 @@ require.config({
         ribbon: 'menus/Ribbon',
         modalView: 'menus/ModalView',
         menuWrapper: 'menus/MenuWrapperView',
-        menuParent: 'menus/MenuParentView'
+        menuParent: 'menus/MenuParentView',
+        scriptView: 'menus/ScriptView'
     },
 
     shim: {
