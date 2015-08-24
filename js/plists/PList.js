@@ -9,7 +9,27 @@ define(['three'], function(THREE){
             navDesign:{
                 name: "Design",
                 tabs: {
-                    default:"Default"
+                    designDraw: "Draw",
+                    designConstraints: "Constraints"
+                }
+            },
+            navSimulate:{
+                name: "Simulate",
+                tabs: {
+                    simAnimate: "Animate"
+                }
+            },
+            navOptimize: {
+                name: "Optimize",
+                tabs: {
+                    optConstraints: "Constraints",
+                    optRun: "Run"
+                }
+            },
+            navFab: {
+                name: "Make",
+                tabs:{
+                    makeFlatStock: "Flat Stock"
                 }
             }
         }

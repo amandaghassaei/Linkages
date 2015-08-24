@@ -6,14 +6,14 @@
 define(['underscore', 'fileSaverLib'], function(_, saveAs){//
 
     function _saveFile(data, name, extension){
-        var blob = new Blob([data], {type: "text/plain;charset=utf-8"});
+        var string = JSON.stringify(data, null, "\t");
+        var blob = new Blob([string], {type: "text/plain;charset=utf-8"});
         saveAs(blob, name + extension);
     }
 
     function save(name){
         if (!name || name == "" || name == undefined) name = "Output";
-        var data = JSON.stringify({
-        });
+        var data = {};
         _saveFile(data, name, ".json");
     }
 

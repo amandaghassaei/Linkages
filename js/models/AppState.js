@@ -12,7 +12,7 @@ define(['underscore', 'backbone', 'threeModel', 'three', 'plist', 'fileSaver'], 
         defaults: {//menu and view/render/interaction states
 
             currentNav:"navDesign",// design, sim, assemble
-            currentTab:"default",
+            currentTab:"designDraw",
 
             lastNavTab: {},//last tab that one open in each of the main menus
 
@@ -56,7 +56,7 @@ define(['underscore', 'backbone', 'threeModel', 'three', 'plist', 'fileSaver'], 
         _navChanged: function(){
             //update to last tab open in that section
             var navSelection = this.get("currentNav");
-            var nextTab = this.get("lastNavTab")[navSelection] || _.keys(plist.allMenuTabs[navSelection])[0];
+            var nextTab = this.get("lastNavTab")[navSelection] || _.keys(plist.allMenus[navSelection].tabs)[0];
             this.set("currentTab", nextTab, {silent:true});
         },
 
