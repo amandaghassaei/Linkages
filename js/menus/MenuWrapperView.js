@@ -3,10 +3,10 @@
  */
 
 
-define(['jquery', 'underscore', 'plist', 'backbone', 'text!menus/templates/MenuWrapperView.html'],
-    function($, _, plist, Backbone, template){
+define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/templates/MenuWrapperView.html'],
+    function($, _, plist, Backbone, appState, template){
 
-    return Backbone.View.extend({
+    var MenuWrapper = Backbone.View.extend({
 
         el: "#menuWrapper",
 
@@ -271,4 +271,6 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'text!menus/templates/MenuW
 
         template: _.template(template)
     });
+
+    return new MenuWrapper({model:appState});//global singleton
 });

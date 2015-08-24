@@ -71,12 +71,9 @@ require.config({
 //};
 
 //init stuff
-require(['appState', 'navbar', 'ribbon', 'menuWrapper', 'threeModel', 'threeView', 'flatUI', 'bootstrapSlider'],
-    function(appState, Navbar, Ribbon, MenuWrapper, three, ThreeView){
+require(['appState', 'threeModel', 'threeView', 'flatUI', 'bootstrapSlider', 'menuWrapper', 'ribbon', 'navbar'],
+    function(appState, three, ThreeView){
 
-    new MenuWrapper({model:appState});
-    new Navbar({model:appState});
-    new Ribbon({model:appState});
     new ThreeView({model:three});
 });
 

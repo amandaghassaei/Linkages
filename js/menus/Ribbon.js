@@ -2,9 +2,10 @@
  * Created by fab on 3/18/15.
  */
 
-define(['jquery', 'underscore', 'backbone', 'plist', 'text!menus/templates/Ribbon.html'], function($, _, Backbone, plist, template){
+define(['jquery', 'underscore', 'backbone', 'plist', 'appState', 'text!menus/templates/Ribbon.html'],
+    function($, _, Backbone, plist, appState, template){
 
-    return Backbone.View.extend({
+    var Ribbon = Backbone.View.extend({
 
         el: "#navRibbon",
 
@@ -25,5 +26,7 @@ define(['jquery', 'underscore', 'backbone', 'plist', 'text!menus/templates/Ribbo
         template: _.template(template)
 
     });
+
+    return new Ribbon({model:appState});//global singleton
 });
 

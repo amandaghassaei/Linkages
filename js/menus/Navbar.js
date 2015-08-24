@@ -5,7 +5,7 @@
 
 define(['jquery', 'underscore', 'backbone', 'fileSaver', 'navViewMenu', 'appState'], function($, _, Backbone, fileSaver, NavViewMenu, appState){
 
-    return Backbone.View.extend({
+    var Navbar = Backbone.View.extend({
 
         el: "body",
 
@@ -142,4 +142,6 @@ define(['jquery', 'underscore', 'backbone', 'fileSaver', 'navViewMenu', 'appStat
         }
 
     });
+
+    return new Navbar({model:appState});
 });
