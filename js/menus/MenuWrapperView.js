@@ -21,12 +21,19 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
 
         initialize: function(){
 
+            this.currentNav = null;
+            this.currentTab = null;
+
             _.bindAll(this, "render", "_updateCurrentTab", "_setVisibility", "_hide", "_show", "_onKeyUp");
             $(document).bind('keyup', {}, this._onKeyUp);
 
             //bind events
-            this.listenTo(this.model, "change:currentNav", this.render);
+            this.listenTo(this.model, "change:currentNav", function(){
+                if (this.currentNav == this.model.get("currentNav")) return;
+                this.render();
+            });
             this.listenTo(this.model, "change:currentTab", function(){
+                if (this.currentTab == this.model.get("currentTab")) return;
                 if (!this.model.changedAttributes() || this.model.changedAttributes()["currentNav"]) return;
                 this._updateCurrentTab();
             });
@@ -192,14 +199,34 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
 
 
 
+
+
         _tabWasSelected: function(e){
             e.preventDefault();
             var tabName = $(e.target).parent().data('name');
             this.model.set("currentTab", tabName);
         },
 
-        _updateCurrentTab: function(){
+        initTabWithObject: function(object, tab, nav){
+            //bypass appstate event listening
+            this.model.set("currentTab", tab, {silent:true});
+            if (nav === undefined || nav == this.model.get("currentNav")) this._updateCurrentTab(object);
+            else {
+                this.model.set("currentNav", nav, {silent:true});
+                this.render(object);
+            }
+            this.model.trigger("change:currentTab change:currentNav");
+        },
+
+        _updateCurrentTab: function(object){
+            console.log(object);
+            this.currentTab = tabName;
             var tabName = this.model.get("currentTab");
+            this._selectTab(tabName);
+            this._renderTab(tabName, object);
+        },
+
+        _selectTab: function(tabName){
             _.each($(".menuWrapperTab"), function(tab){
                 var $tab = $(tab);
                 if ($tab.data('name') == tabName){
@@ -208,7 +235,6 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
                     $tab.removeClass("active");
                 }
             });
-            this._renderTab(tabName);
         },
 
         _softRenderTab: function(){
@@ -216,29 +242,32 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
             else console.warn("no menu found");
         },
 
-        _renderTab: function(tabName){
+        _renderTab: function(tabName, object){
             if (!tabName || !_.isString(tabName)) tabName = this.model.get("currentTab");
 
             if (this.menu) this.menu.destroy();
             var self = this;
             require(["menus/tabs/" + tabName.charAt(0).toUpperCase() + tabName.slice(1) + "MenuView"], function(MenuView){
-                self.menu = new MenuView({model:self.model});
+                var data = {model:self.model};
+                if (object) data.myObject = object;
+                self.menu = new MenuView(data);
                 self.menu.render();
             });
         },
 
-        render: function(){
+        render: function(object){
+            this.currentNav = this.model.get("currentNav");
             var self = this;
             this._hide(function(){
                 $("#menuContent").html("");//clear current menu
-                self._populateAndShow();
-                self.model.trigger("change:currentTab");//this was updated silently before todo need this?
+                self._populateAndShow(object);
+
             }, true);
         },
 
-        _populateAndShow: function(){
+        _populateAndShow: function(object){
             $("#menuHeader").html(this.template(_.extend(this.model.toJSON(), plist)));
-            this._updateCurrentTab();
+            this._updateCurrentTab(object);
             this._show();
         },
 

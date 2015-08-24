@@ -31,6 +31,20 @@ define(['three'], function(THREE){
                 tabs:{
                     makeFlatStock: "Flat Stock"
                 }
+            },
+            navHinge: {
+                name: "Hinge",
+                parent: "Design",
+                tabs:{
+                    hingeEdit: "Edit"
+                }
+            },
+            navLink: {
+                name: "Link",
+                parent: "Design",
+                tabs:{
+                    linkEdit: "Edit"
+                }
             }
         }
 

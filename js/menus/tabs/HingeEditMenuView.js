@@ -3,7 +3,8 @@
  */
 
 
-define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/DesignDrawMenuView.html'],
+
+define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/DefaultMenuView.html'],
     function($, _, MenuParentView, plist, template){
 
     return MenuParentView.extend({

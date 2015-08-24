@@ -39,7 +39,13 @@ require.config({
         modalView: 'menus/ModalView',
         menuWrapper: 'menus/MenuWrapperView',
         menuParent: 'menus/MenuParentView',
-        scriptView: 'menus/ScriptView'
+        scriptView: 'menus/ScriptView',
+
+        //objects
+        hinge: 'objects/Hinge',
+        link: 'objects/Link'
+
+
     },
 
     shim: {
