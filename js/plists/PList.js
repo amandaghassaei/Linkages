@@ -34,14 +34,14 @@ define(['three'], function(THREE){
             },
             navHinge: {
                 name: "Hinge",
-                parent: "Design",
+                parent: "navDesign",
                 tabs:{
                     hingeEdit: "Edit"
                 }
             },
             navLink: {
                 name: "Link",
-                parent: "Design",
+                parent: "navDesign",
                 tabs:{
                     linkEdit: "Edit"
                 }
