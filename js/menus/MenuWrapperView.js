@@ -109,15 +109,6 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
             }
             var key = $target.data("key");
 
-            //some numbers are relative
-            var owner = this._getPropertyOwner($target);//todo not great here
-            if (property == "stockPosition" && owner.get(property + "Relative")){
-                if (key) newVal = parseFloat((newVal + owner.get("originPosition")[key]).toFixed(4));
-                else console.warn("no key found for " + property);
-            } else if (property == "rapidHeight" && !owner.get(property + "Relative")){
-                newVal = parseFloat((newVal - owner.get("originPosition")["z"]).toFixed(4));
-            }
-
             //remove trailing zeros
             newVal = newVal.toString();
             newVal = parseFloat(newVal);
@@ -230,7 +221,7 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
 
             if (this.menu) this.menu.destroy();
             var self = this;
-            require([tabName + "Menu"], function(MenuView){
+            require(["menus/tabs/" + tabName.charAt(0).toUpperCase() + tabName.slice(1) + "MenuView"], function(MenuView){
                 self.menu = new MenuView({model:self.model});
                 self.menu.render();
             });

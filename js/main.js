@@ -36,10 +36,7 @@ require.config({
         ribbon: 'menus/Ribbon',
         modalView: 'menus/ModalView',
         menuWrapper: 'menus/MenuWrapperView',
-        menuParent: 'menus/MenuParentView',
-
-        //Submenus
-        defaultMenu: 'menus/DefaultMenuView'
+        menuParent: 'menus/MenuParentView'
     },
 
     shim: {
