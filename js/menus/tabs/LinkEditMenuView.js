@@ -13,11 +13,15 @@ define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/Def
         events: {
         },
 
-        _initialize: function(){
+        _initialize: function(options){
+
+            if (options.myObject) this.link = options.myObject;
+            else console.warn("no link inited for this menu");
+
         },
 
         _makeTemplateJSON: function(){
-            return _.extend(this.model.toJSON(), plist);
+            return _.extend(this.model.toJSON(), plist, this.link.toJSON());
         },
 
         template: _.template(template)

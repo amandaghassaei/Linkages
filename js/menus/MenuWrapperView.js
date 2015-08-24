@@ -219,9 +219,8 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
         },
 
         _updateCurrentTab: function(object){
-            console.log(object);
-            this.currentTab = tabName;
             var tabName = this.model.get("currentTab");
+            this.currentTab = tabName;
             this._selectTab(tabName);
             this._renderTab(tabName, object);
         },
