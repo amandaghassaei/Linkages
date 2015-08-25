@@ -20,14 +20,14 @@ define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/Des
         _newHinge: function(e){
             e.preventDefault();
             require(['menuWrapper', 'hinge'], function(wrapper, Hinge){
-                wrapper.initTabWithObject(new Hinge(), "hingeEdit", "navHinge");
+                wrapper.initTabWithObject(new Hinge({}), "hingeEdit", "navHinge");
             });
         },
 
         _newLink: function(e){
             e.preventDefault();
             require(['menuWrapper', 'link'], function(wrapper, Link){
-                wrapper.initTabWithObject(new Link(), "linkEdit", "navLink");
+                wrapper.initTabWithObject(new Link({}), "linkEdit", "navLink");
             });
         },
 

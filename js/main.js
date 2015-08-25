@@ -42,8 +42,8 @@ require.config({
         scriptView: 'menus/ScriptView',
 
         //objects
-        hinge: 'objects/Hinge',
-        link: 'objects/Link'
+        hinge: 'hinge/Hinge',
+        link: 'link/Link'
 
 
     },

@@ -171,10 +171,10 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
         _setProperty: function($target, property, newVal, key){
             var owner = this._getPropertyOwner($target);
             if (!owner) return;
-            if (owner.setProperty){
-                owner.setProperty(property, newVal, key);
-                return;
-            }
+//            if (owner.setProperty){
+//                owner.setProperty(property, newVal, key);
+//                return;
+//            }
             if (key){
                 var propObject = this._getOwnerProperty(owner, property);
                 if (propObject.clone) propObject = propObject.clone();
