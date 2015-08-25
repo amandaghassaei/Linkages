@@ -20,10 +20,26 @@ define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/Def
 
         },
 
-        _makeTemplateJSON: function(){
-            return _.extend(this.model.toJSON(), plist, this.link.toJSON());
+        deleteExitMenu: function(e, callback){
+            callback();
         },
 
-        template: _.template(template)
+        cancelExitMenu: function(e, callback){
+            callback();
+        },
+
+        saveExitMenu: function(e, callback){
+            callback();
+        },
+
+        _makeTemplateJSON: function(){
+            return _.extend(this.model.toJSON(), plist, {myLink: this.link.toJSON()});
+        },
+
+        template: _.template(template),
+
+        _destroy: function(){
+            this.link = null;
+        }
     });
 });

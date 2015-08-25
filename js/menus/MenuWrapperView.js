@@ -16,7 +16,10 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
             "focusout .floatInput":                        "_softRenderTab",//force rounding if needed
             "focusout .intInput":                          "_softRenderTab",
             "change input:checkbox":                       "_clickCheckbox",
-            "click input:radio":                           "_radioSelection"
+            "click input:radio":                           "_radioSelection",
+            "click #deleteExitMenu":                       "_deleteExitMenu",
+            "click #cancelExitMenu":                       "_cancelExitMenu",
+            "click #saveExitMenu":                         "_saveExitMenu"
         },
 
         initialize: function(){
@@ -194,6 +197,40 @@ define(['jquery', 'underscore', 'plist', 'backbone', 'appState', 'text!menus/tem
         _setOwnerProperty: function(owner, property, value){
             if (owner instanceof Backbone.Model) owner.set(property, value);
             else owner[property] = value;
+        },
+
+
+
+
+
+        _deleteExitMenu: function(e){
+            e.preventDefault();
+            var nextNav = this._getNextNav();
+            this.menu.deleteExitMenu(e, function(){
+                appState.set("currentNav", nextNav);
+            });
+        },
+
+        _cancelExitMenu: function(e){
+            e.preventDefault();
+            var nextNav = this._getNextNav();
+            this.menu.cancelExitMenu(e, function(){
+                appState.set("currentNav", nextNav);
+            });
+        },
+
+        _saveExitMenu: function(e){
+            e.preventDefault();
+            var nextNav = this._getNextNav();
+            this.menu.saveExitMenu(e, function(){
+                appState.set("currentNav", nextNav);
+            });
+        },
+
+        _getNextNav: function(){
+            var parentNav = plist.allMenus[this.model.get("currentNav")].parent;
+            if (parentNav === undefined) console.warn("no parent nav found, unable to exit menu");
+            return parentNav || appState.get("currentNav");
         },
 
 

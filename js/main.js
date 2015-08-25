@@ -43,6 +43,7 @@ require.config({
 
         //objects
         hinge: 'hinge/Hinge',
+        hingeRender: 'hinge/HingeRender',
         link: 'link/Link'
 
 

@@ -4,7 +4,7 @@
 
 
 
-define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/DefaultMenuView.html'],
+define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/HingeEditMenuView.html'],
     function($, _, MenuParentView, plist, template){
 
     return MenuParentView.extend({
@@ -21,10 +21,27 @@ define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/Def
 
         },
 
-        _makeTemplateJSON: function(){
-            return _.extend(this.model.toJSON(), plist, this.hinge.toJSON());
+        deleteExitMenu: function(e, callback){
+            callback();
         },
 
-        template: _.template(template)
+        cancelExitMenu: function(e, callback){
+            callback();
+        },
+
+        saveExitMenu: function(e, callback){
+            callback();
+        },
+
+
+        _makeTemplateJSON: function(){
+            return _.extend(this.model.toJSON(), plist, {myHinge: this.hinge.toJSON()});
+        },
+
+        template: _.template(template),
+
+        _destroy: function(){
+            this.hinge = null;
+        }
     });
 });

@@ -3,11 +3,16 @@
  */
 
 
-define(['underscore'], function(_){
+define(['underscore', 'three'], function(_, THREE){
 
     function Hinge(json){
 
         this._position = json.position || new THREE.Vector3(0,0,0);
+
+        var self = this;
+        require(['hingeRender'], function(){
+            self._initView(self._position);
+        });
     }
 
     Hinge.prototype.getPosition = function(){
@@ -20,6 +25,7 @@ define(['underscore'], function(_){
 
     Hinge.prototype.destroy = function(){
         this._position = null;
+        if (this._remove) this._remove();
     };
 
     Hinge.prototype.toJSON = function(){
