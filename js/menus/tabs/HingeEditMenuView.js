@@ -4,8 +4,8 @@
 
 
 
-define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/HingeEditMenuView.html'],
-    function($, _, MenuParentView, plist, template){
+define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/HingeEditMenuView.html', 'globalLinkage'],
+    function($, _, MenuParentView, plist, template, globalLinkage){
 
     return MenuParentView.extend({
 
@@ -22,6 +22,8 @@ define(['jquery', 'underscore', 'menuParent', 'plist', 'text!menus/templates/Hin
         },
 
         deleteExitMenu: function(e, callback){
+            globalLinkage.removeHinge(this.hinge);
+            this.hinge.destroy();
             callback();
         },
 

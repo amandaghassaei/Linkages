@@ -41,11 +41,16 @@ require.config({
         menuParent: 'menus/MenuParentView',
         scriptView: 'menus/ScriptView',
 
-        //objects
+        //hinge
         hinge: 'hinge/Hinge',
         hingeRender: 'hinge/HingeRender',
-        link: 'link/Link'
 
+        //link
+        link: 'link/Link',
+
+        //linkage
+        linkage: 'linkage/Linkage',
+        globalLinkage: 'linkage/GlobalLinkage'
 
     },
 
