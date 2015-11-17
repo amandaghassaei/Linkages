@@ -61,7 +61,7 @@ AppState = Backbone.Model.extend({
 
         is3D: false,
         isAnimating: true,//play/pause animation
-        isRunning:false,//play/pause optimization
+        isRunning:true,//play/pause optimization
         maxNumGenerations: -1,
 
         numLegPairs: 3,
